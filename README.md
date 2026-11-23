@@ -1,5 +1,13 @@
 # Continuum
 
+> **Experimental — AI-generated, not human-validated.** This repository is
+> built by an AI agent team under human ownership. Its contents have **not
+> been validated by human experts**; we publish it for you to explore and give
+> feedback on, not for production or compliance use. There is **no guarantee
+> that anything here is correct or complete, and no liability is accepted**
+> for its use. Nothing here is professional, compliance, or legal advice.
+> The licence terms (including warranty disclaimers) apply in full.
+
 **About this project.** Continuum is built almost entirely by an organised
 team of AI agents, under human ownership and direction. It is an experiment
 in agent-built software as much as a compliance product — the code, the
