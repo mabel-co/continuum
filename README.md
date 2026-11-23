@@ -34,9 +34,8 @@ This repository and its content pack contain **zero verbatim ISO text**.
 ISO references are clause numbers with our own mapping language (D-040
 carve-out; verify with `check_licence_bleed.py` at any publication PR).
 
-## Quickstart (stub)
+## Quickstart
 
-The engine snapshot from the private development repository lands in a
-follow-up (separate vehicle; publication still requires the Owner's go per
-D-041 item 5). Until then this repo is the project's front door and
-methodology home.
+The engine code is being prepared for publication in this repository now;
+until the first release lands here, this repo is the project's front door
+and methodology home. Watch the repo to be notified.
