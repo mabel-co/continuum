@@ -1,0 +1,28 @@
+{
+  "change_log": [
+    {
+      "event_id": "chng-20261101-001",
+      "regulation": "eu-ai-act",
+      "old_hash": "sha256:aaa",
+      "new_hash": "sha256:bbb",
+      "triage_classification": "P1",
+      "affected_records": ["eu-ai-act::title-3::article-9"],
+      "affected_controls": ["ctrl-example-1"],
+      "changed_evidence_types": ["validation-report"],
+      "activated_at": "2026-11-01T09:00:00Z",
+      "notification_channels": ["dashboard-update"],
+      "status": "activated"
+    },
+    {
+      "event_id": "chng-20261101-002",
+      "regulation": "sr-26-2",
+      "old_hash": "sha256:ccc",
+      "new_hash": "sha256:ddd",
+      "triage_classification": "N/A",
+      "affected_records": [],
+      "affected_controls": [],
+      "activated_at": "2026-11-01T10:00:00Z",
+      "status": "rejected"
+    }
+  ]
+}

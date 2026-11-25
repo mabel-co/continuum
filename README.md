@@ -44,6 +44,46 @@ carve-out; verify with `check_licence_bleed.py` at any publication PR).
 
 ## Quickstart
 
-The engine code is being prepared for publication in this repository now;
-until the first release lands here, this repo is the project's front door
-and methodology home. Watch the repo to be notified.
+The engine snapshot lives in this repository. It is **stdlib-only** — two
+Python packages, no third-party dependencies, Python 3.11+.
+
+```bash
+git clone https://github.com/mabel-co/continuum.git
+cd continuum
+python -m unittest discover -s tests   # 41 tests, all stdlib
+```
+
+### Publish a regulatory change notification
+
+`continuum_integration` turns an activated change-log record into a canonical
+event on an append-only, idempotent JSONL notification bus:
+
+```bash
+python -m continuum_integration publish \
+    --change-log examples/change-log.json \
+    --base-dir ./meta
+cat ./meta/notifications/*.jsonl
+```
+
+Events land under `meta/notifications/<UTC-day>.jsonl`; re-publishing the same
+`event_id` is a no-op, and non-`activated` records are skipped with a reason.
+The `fanout` module dispatches events to named downstream channels.
+
+### Run the monitoring dashboard
+
+`continuum_monitoring` aggregates compliance operation events into counters,
+error rates, latency percentiles, and alert-rule state, served over stdlib
+HTTP:
+
+```bash
+MONITORING_PORT=8080 python -m continuum_monitoring
+# then open http://localhost:8080/dashboard  (also: /health)
+```
+
+Use it as a library to record `ComplianceOperationEvent`s and evaluate alert
+rules (`alerting.py` — console, JSONL, or webhook sinks).
+
+**Layout:** `continuum_integration/` and `continuum_monitoring/` are the two
+importable packages (installable via `pip install .`); `tests/` is the
+unittest suite; `examples/` holds sample input. This is an experimental
+snapshot — see the disclaimer above.

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "continuum-engine"
+version = "0.1.0"
+description = "Continuum engine snapshot — regulatory change notification bus and compliance monitoring (stdlib-only, Python >= 3.11)"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11"
+authors = [
+  { name = "The Continuum project" }
+]
+keywords = ["compliance", "regulatory-change", "notification-bus", "monitoring"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Office/Business",
+]
+
+[project.scripts]
+continuum-integration = "continuum_integration.__main__:main"
+continuum-monitoring = "continuum_monitoring.__main__:main"
+
+[tool.setuptools]
+packages = ["continuum_integration", "continuum_monitoring"]
