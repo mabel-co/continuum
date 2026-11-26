@@ -39,8 +39,7 @@ there to make your path easier, not to disclaim it.
 ## No ISO text
 
 This repository and its content pack contain **zero verbatim ISO text**.
-ISO references are clause numbers with our own mapping language (D-040
-carve-out; verify with `check_licence_bleed.py` at any publication PR).
+ISO references are clause numbers with our own mapping language.
 
 ## Quickstart
 
@@ -87,3 +86,9 @@ rules (`alerting.py` — console, JSONL, or webhook sinks).
 importable packages (installable via `pip install .`); `tests/` is the
 unittest suite; `examples/` holds sample input. This is an experimental
 snapshot — see the disclaimer above.
+
+**Related repositories.** The regulatory content pack this engine publishes
+change notifications about lives in
+[`mabel-co/continuum-content`](https://github.com/mabel-co/continuum-content).
+Product overview, methodology, and roadmap:
+[Assurer — the Continuum product page](https://mabel-co.github.io/website/continuum/).
