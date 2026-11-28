@@ -1,0 +1,104 @@
+{
+  "sources": [
+    {
+      "source_id": "nist-alerts-rss",
+      "name": "NIST News & Alerts RSS",
+      "url": "https://www.nist.gov/news-events/alerts/rss.xml",
+      "method": "feed",
+      "regulation": "nist-ai-rmf",
+      "cadence": "daily",
+      "priority": "critical",
+      "notes": "Verified 200, valid RSS 2.0 (4b design, 2026-08-26)."
+    },
+    {
+      "source_id": "eurlex-ai-act-feed",
+      "name": "EUR-Lex AI Act topic feed",
+      "url": "https://eur-lex.europa.eu/feed/ai-act.en.xml",
+      "method": "feed",
+      "regulation": "eu-ai-act",
+      "cadence": "daily",
+      "priority": "critical",
+      "notes": "Verified 202 (async acceptance) at 4b design time; 202 handled as retryable, not change."
+    },
+    {
+      "source_id": "eurlex-celex-32024R1689",
+      "name": "EUR-Lex CELEX record \u2014 Reg (EU) 2024/1689 (AI Act) amendment relations",
+      "url": "https://publications.europa.eu/resource/celex/32024R1689",
+      "method": "scrape",
+      "regulation": "eu-ai-act",
+      "cadence": "weekly",
+      "priority": "critical",
+      "notes": "Direct poll of the consolidated CELEX record: its amended_by relations are the authoritative amendment ledger. Current amended_by set: L_202601744; L_202402847; L_202500327; L_202600150."
+    },
+    {
+      "source_id": "eu-pubifications-atom",
+      "name": "EU Publications Atom feed (all EU law)",
+      "url": "https://publications.europa.eu/en/article/.rss",
+      "method": "feed",
+      "regulation": "eu-ai-act",
+      "cadence": "weekly",
+      "priority": "high",
+      "notes": "Known working global Atom feed per catalog \u00a72.1; not directly verified in catalog tick."
+    },
+    {
+      "source_id": "mas-reg-updates-rss",
+      "name": "MAS Regulatory Updates RSS",
+      "url": "https://www.mas.gov.sg/rss/regulatory-updates.xml",
+      "method": "feed",
+      "regulation": "mas-ai-governance",
+      "cadence": "monthly",
+      "priority": "high",
+      "notes": "HTTP 200 but returned an HTML maintenance page at verification; treated as feed failure (fail-loud) when non-XML."
+    },
+    {
+      "source_id": "federalregister-ai-api",
+      "name": "Federal Register API \u2014 AI documents",
+      "url": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=artificial%20intelligence&per_page=40&order=newest",
+      "method": "api",
+      "regulation": "cross-cutting",
+      "cadence": "daily",
+      "priority": "critical",
+      "notes": "FR API confirmed machine-friendly; RSS feeds sit behind Cloudflare, API does not."
+    },
+    {
+      "source_id": "frb-sr-26-2-letter",
+      "name": "FRB SR Letter 26-2 \u2014 Revised Guidance on Model Risk Management",
+      "url": "https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm",
+      "method": "scrape",
+      "regulation": "sr-26-2",
+      "cadence": "weekly",
+      "priority": "high",
+      "notes": "Reaches FRB letter page directly since SR 26-2 superseded SR 11-7 (2026-04-17). Index of all SR letters: /supervisionreg/srletters/srletters.htm (HTTP 200). Supersedes former source frb-sr-letters-index (srletters/index.htm path now 404). URL poll."
+    },
+    {
+      "source_id": "eu-ai-office-page",
+      "name": "EU AI Office / AI Act policy page",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+      "method": "scrape",
+      "regulation": "eu-ai-act",
+      "cadence": "weekly",
+      "priority": "critical",
+      "notes": "Verified 200 at 4b design time; HTML URL poll."
+    },
+    {
+      "source_id": "nist-ai-program-page",
+      "name": "NIST AI Program page",
+      "url": "https://www.nist.gov/artificial-intelligence",
+      "method": "scrape",
+      "regulation": "nist-ai-rmf",
+      "cadence": "weekly",
+      "priority": "high",
+      "notes": "200 OK (cached) per catalog \u00a72.4; URL poll."
+    },
+    {
+      "source_id": "fca-home",
+      "name": "FCA homepage",
+      "url": "https://www.fca.org.uk",
+      "method": "scrape",
+      "regulation": "fca-ai-ml",
+      "cadence": "weekly",
+      "priority": "high",
+      "notes": "No RSS (404) and JS rendering limits scraping; retained as URL poll \u2014 frequent Cloudflare blocks surface as recorded failures, never silent no-change."
+    }
+  ]
+}

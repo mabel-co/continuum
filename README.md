@@ -43,13 +43,13 @@ ISO references are clause numbers with our own mapping language.
 
 ## Quickstart
 
-The engine snapshot lives in this repository. It is **stdlib-only** — two
+The engine lives in this repository. It is **stdlib-only** — three
 Python packages, no third-party dependencies, Python 3.11+.
 
 ```bash
 git clone https://github.com/mabel-co/continuum.git
 cd continuum
-python -m unittest discover -s tests   # 41 tests, all stdlib
+python -m unittest discover -s tests   # 77 tests, all stdlib
 ```
 
 ### Publish a regulatory change notification
@@ -82,10 +82,39 @@ MONITORING_PORT=8080 python -m continuum_monitoring
 Use it as a library to record `ComplianceOperationEvent`s and evaluate alert
 rules (`alerting.py` — console, JSONL, or webhook sinks).
 
-**Layout:** `continuum_integration/` and `continuum_monitoring/` are the two
-importable packages (installable via `pip install .`); `tests/` is the
-unittest suite; `examples/` holds sample input. This is an experimental
-snapshot — see the disclaimer above.
+### Monitor regulatory sources
+
+`regulatory_monitoring` is the detection step that feeds the notification
+bus: it fetches a curated list of public regulatory sources (RSS/Atom
+feeds, JSON APIs, and page snapshots), hashes normalised content, detects
+changes against a durable state file, and appends change records for
+`continuum_integration` to publish:
+
+```bash
+python -m regulatory_monitoring --data-dir ./data
+# or a single cadence: python -m regulatory_monitoring --cadence daily
+```
+
+Sources live in `regulatory_monitoring/sources.json`; a run exits non-zero
+if any fetch fails, so a scheduler sees failures in the run result, not
+just the log. Network access is the one runtime need of this package;
+everything else runs offline.
+
+**What is in this release.** All three stdlib-only engine packages:
+regulatory source monitoring (`regulatory_monitoring`), the change
+notification bus (`continuum_integration`), and compliance operation
+monitoring with a live dashboard (`continuum_monitoring`).
+
+**What is not.** The hosted demonstration slice around these packages —
+the FastAPI web app, database-backed evidence store, and report generator
+that tie them into a running service — depends on third-party frameworks
+and deployment-specific configuration, so it is not part of this
+engine release. The engine itself is complete and runnable as shipped.
+
+**Layout:** `continuum_integration/`, `continuum_monitoring/`, and
+`regulatory_monitoring/` are the three importable packages (installable
+via `pip install .`); `tests/` is the unittest suite; `examples/` holds
+sample input. This is experimental software — see the disclaimer above.
 
 **Related repositories.** The regulatory content pack this engine publishes
 change notifications about lives in

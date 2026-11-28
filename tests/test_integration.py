@@ -62,7 +62,7 @@ def _make_event(
 
 SAMPLE_REGISTRY: dict[str, str] = {"sr-26-2": "v2.3", "eu-ai-act": "v1"}
 # Fixture ids use SR 26-2 (live US model-risk guidance since 2026-04-17,
-# superseding SR 11-7 — Issue #2448/#2472). The `section-vii::req-4` record
+# superseding SR 11-7). The `section-vii::req-4` record
 # paths are synthetic path-format samples, not citations of the letter's
 # structure; the publisher derives source_paths from the regulation id alone.
 

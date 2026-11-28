@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "continuum-engine"
 version = "0.1.0"
-description = "Continuum engine snapshot — regulatory change notification bus and compliance monitoring (stdlib-only, Python >= 3.11)"
+description = "Continuum engine — regulatory source monitoring, change-notification bus, and compliance monitoring (stdlib-only, Python >= 3.11)"
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.11"
@@ -25,6 +25,10 @@ classifiers = [
 [project.scripts]
 continuum-integration = "continuum_integration.__main__:main"
 continuum-monitoring = "continuum_monitoring.__main__:main"
+regulatory-monitor = "regulatory_monitoring.__main__:main"
 
 [tool.setuptools]
-packages = ["continuum_integration", "continuum_monitoring"]
+packages = ["continuum_integration", "continuum_monitoring", "regulatory_monitoring"]
+
+[tool.setuptools.package-data]
+regulatory_monitoring = ["sources.json"]
